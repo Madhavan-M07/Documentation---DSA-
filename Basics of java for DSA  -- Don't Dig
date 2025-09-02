@@ -12,3 +12,85 @@ main : Entry Point of Execution
 System.out.println : Print Output .
 
 
+2. Data Types :
+
+int         4bytes       int a = 4;
+long        8bytes       long y = 100L;
+double      8bytes       double d = 3.14;
+float       4bytes       float  a = 1.5f; 
+char        2bytes       char a = 'a';
+boolean     1bit         boolean b = true;
+string      varies       string s = 'abc';
+
+3. Input and Output 
+
+import java.util.Scanner*;
+public class Main{
+  public static void main(String[] args){
+      Scanner in = new Scanner(System.in);
+     int n = in.nextInt() //integer data
+     String charc = in.next();  // 1 character
+     String line = in.nextLine(); // Full line
+}
+
+
+4. Operators :
+
+int a = 6 , int b =6;
+
+System.out.println(a+b);    // 12
+System.out.println(a-b);    // 0
+System.out.println(a*b); //36
+System.out.println(a/b);  //1 (integer division)
+System.out.println(a%b);  // 0 (modulus)
+
+5. Control Statement :
+
+if(n%2==0){
+System.out.println("Even");
+} else{
+  System.out.println("Odd");
+}
+
+for(int i = 0 ; i < 5 ; i++){
+   System.out.print(i + " ");  // 0 1 2 3 4
+}
+
+while(n>0){
+  System.out.println(n);    //
+  n--;                       
+}
+
+
+6. Arrays :
+int[] arr = new int[n];   //empty array
+int[] nums =  {1,2,3,4};  // Initialized
+
+System.out.println(nums.length); //size
+System.out.println(nums[1]);  // Access Element
+
+for(int x:nums){
+ System.out.println(x + " ");
+}
+
+
+7. Strings :
+
+String s = "hello";
+
+System.out.println(s.length()); //5
+system.out.println(s.charAt(1));  //e
+system.out.println(s.substring(1,4)) //ell
+System.out.println(s.equals("hi")); // false
+System.out.println(s.compareTo("hi")); //lexicographic compare
+
+Strings are immutable ( cannot be directly changed )
+Use StringBuilder for fast modifications :
+StringBuilder sb = new StringBuilder("abc");
+sb.append("d"); // "abcd"
+sb.reverse();  // "dcba"
+
+
+8. Functions :
+
+
