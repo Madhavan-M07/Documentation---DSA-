@@ -1,0 +1,14 @@
+                                                                                    BASICS OF JAVA FOR DSA
+
+1. BASIC STRUCTURE :
+
+public class Main{
+   public static void main(String[] args){
+     System.out.println("Hello Maddy");
+}
+
+public class Main : Every Program runs inside the Main .
+main : Entry Point of Execution
+System.out.println : Print Output .
+
+
