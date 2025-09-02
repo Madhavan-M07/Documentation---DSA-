@@ -60,3 +60,35 @@ Nov 15 → 200+ problems
 Dec 15 → 300+ problems
 
 Jan → Mock practice + revision + 350+ problems documented
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**The Truth**
+DSA is not talent-based. It’s a skill built by repetition.
+Right now you’re at Level 0 (can understand code, but not generate logic fast).
+After 100–150 problems, your brain will auto-start generating logic patterns.
+That’s when the switch happens → from “I can’t” → to “I know how to break this down.”
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**How You Will Clear Zoho**
+Repo Documentation → forces you to write logic in words before code.
+ 1 . Once you can explain in English, code comes easier.
+** Striver’s A–Z → you’re following a tested roadmap, not random prep.**
+Daily Coding Habit → even if it’s 1 problem, you’ll build consistency muscle.
+
+**Mock Zoho Practice (Dec-Jan) → you’ll be trained for exact type of questions.**
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**Confidence Booster**
+
+You’re not late. If you start Sept 2 → by Jan 2026 you’ll be 100% ready.
+Most people give up after 30–40 problems → if you finish 300+, you’ll be ahead of 90% of candidates.
+Zoho does not require “LeetCode Hard” → just solid easy + medium. That’s achievable.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+🔥 **Remember**
+Your friend clearing doesn’t reduce your chances. Zoho needs 100s of people every year.
+**You already have the base skills in Java. Now you just need to build logic by practice.**
+**Doubt = normal. But don’t let doubt stop the daily problems.**
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
