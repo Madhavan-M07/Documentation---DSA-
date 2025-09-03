@@ -1,0 +1,312 @@
+Basic Coding :
+NESTED IF ELSE EXAMPLE :
+
+1 . // Take a age from the user and then decide accordingly
+// 1. If age < 18 ,
+//     print -> not eligible for Job
+// 2. If age >=18 and age <=54
+//      print -> "Eligible for Job"
+
+// 3. If age >=55 and age <=57,
+// print -> "eligible for job , but retriement soon."
+
+// 4. If age > 57
+//   print -> "retrirement time"
+import java.util.*;
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int age = sc.nextInt();
+        
+        if(age < 18){
+            System.out.println("not eligible for Job");
+        }
+    
+         else if(age <=57){
+             System.out.println("eligible for job");
+              if(age >=55{
+
+              System.out.println("But Retriement Soon");
+                        }
+        }
+        else{
+            System.out.println("retrirement time");
+        }
+    }
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2. SWITCH CASE EXAMPLE
+/*
+Take the Day No and print the corresponding Day
+For 1 print Monday ,
+For 2 print Tuesday and so on for 7 print Sunday
+
+*/
+
+import java.util.*;
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int Days = sc.nextInt();
+        switch(Days){
+            case 1:
+                System.out.println("Monday");
+                break;
+            case 2:
+                System.out.println("Tuesday");
+                break;
+            case 3:
+                System.out.println("Wednesday");
+                break;
+            case 4:
+                System.out.println("Thrusday");
+                break;
+            default:
+                System.out.println("Invalid");
+        }
+    }
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+3. FOR LOOP :
+for(int i = 1; i<=25; i+=5){
+System.out.println("striver");
+}
+
+4. WHILE LOOP :
+
+int i = 1;
+while(i<=5){
+ System.out.print("Striver" + i);
+i++;
+} 
+
+5. DO WHILE LOOP :  // For first time the loop exectued irrespective of the conditions .
+
+int i = 2;  
+do{
+
+System.out.print("Striver" + i);
+i = i+1;
+}while(i<=1);
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+6 . FUNCTIONS :
+1. FUNCTIONS ARE SET OF CODE WHICH PERFORMS SOMETHING FOR YOU .
+2. FUNCTIONS ARE USED TO MODULARISE CODE .
+3. FUNCTIONS ARE USED TO INCREASE READABILITY .
+4.FUNCTIONS ARE USED TO USE SAME CODE MULTIPLE TIMES .
+
+A function (or method) in Java is a block of code that performs a specific task.
+
+It helps in code reusability.
+
+Avoids repetition.
+
+Makes the program more modular and readable.
+
+Syntax of a Function :
+
+returnType functionName(parameters) {
+    // body of function
+    return value; // if returnType is not void
+}
+
+int add(int a, int b) {
+    return a + b;
+}
+
+🔹 Types of Functions in Java
+
+1. Based on Return Type and Parameters :
+
+There are 4 basic types: 
+
+No return type, No parameters
+
+void greet() {
+    System.out.println("Hello!");
+}
+
+Only performs an action, doesn’t return a value.
+
+
+2. No return type, With parameters
+
+void printName(String name) {
+    System.out.println("Hello, " + name);
+}
+
+Return type, No parameters
+
+int getNumber() {
+    return 42;
+}
+
+
+Return type, With parameters
+
+int multiply(int a, int b) {
+    return a * b;
+}
+
+2. Based on Declaration
+
+User-defined Functions → Written by the programmer.
+
+int square(int x) {
+    return x * x;
+}
+
+Predefined (Library) Functions → Already available in Java libraries.
+
+Math.sqrt(16);   // returns 4.0
+System.out.println("Hello"); // predefined print function
+
+3. Based on Access
+
+Functions can have access modifiers:
+
+public → Accessible everywhere
+
+private → Accessible only within the same class
+
+protected → Accessible within package & subclasses
+
+default → Accessible only within the package
+
+4. Special Types of Functions
+
+Static Functions → Belong to the class, not object.
+
+static void show() {
+    System.out.println("Static method");
+}
+
+
+Instance Functions → Need an object to call.
+
+class Example {
+    void display() {
+        System.out.println("Instance method");
+    }
+}
+
+
+Abstract Functions → Declared without body (must be implemented by child class).
+
+abstract class Shape {
+    abstract void draw();  // abstract function
+}
+
+
+Final Functions → Cannot be overridden in subclasses.
+
+final void cannotChange() {
+    System.out.println("This cannot be overridden");
+}
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+JAVA PASS BY VALUE AND REFERENCE :
+
+1. Pass by Value
+
+A copy of the actual value is passed to the function.
+
+Changes made inside the function do not affect the original variable.
+
+✅ Example:
+
+class Demo {
+    void changeValue(int x) {
+        x = 100;  // only local copy is changed
+    }
+
+    public static void main(String[] args) {
+        int a = 50;
+        Demo d = new Demo();
+        d.changeValue(a);
+        System.out.println(a);  // Output: 50 (not changed)
+    }
+}
+
+
+👉 Here, a remains 50 because Java passes a copy of a.
+
+2. Pass by Reference (Conceptual Only)
+
+Normally means passing the address (reference) of a variable so the function can modify the original value.
+
+In C++, you can do this with references (int &x).
+
+❌ Java does not support true "pass by reference".
+Everything is pass by value in Java.
+
+🔹 Then why confusion in Java?
+
+Because in Java:
+
+Primitive types (int, float, char, etc.) → Copy of value is passed.
+
+Objects → Copy of the reference (memory address) is passed.
+That’s why it looks like pass by reference, but technically it’s still pass by value of the reference.
+
+✅ Example with Objects
+class Student {
+    int marks;
+}
+
+class Demo {
+    void updateMarks(Student s) {
+        s.marks = 100; // modifies the object at that reference
+    }
+
+    public static void main(String[] args) {
+        Student st = new Student();
+        st.marks = 50;
+
+        Demo d = new Demo();
+        d.updateMarks(st);
+
+        System.out.println(st.marks); // Output: 100 (changed!)
+    }
+}
+
+
+👉 Here, the reference (address) to st was copied and passed. Both st in main and s in updateMarks point to the same object, so changes reflect.
+
+❌ Misleading Case (Object Reassignment)
+class Student {
+    int marks;
+}
+
+class Demo {
+    void reassign(Student s) {
+        s = new Student(); // now points to a new object
+        s.marks = 200;
+    }
+
+    public static void main(String[] args) {
+        Student st = new Student();
+        st.marks = 50;
+
+        Demo d = new Demo();
+        d.reassign(st);
+
+        System.out.println(st.marks); // Output: 50 (not changed)
+    }
+}
+
+
+👉 Why? Because the copy of the reference was changed inside the function. The original still points to the old object.
+
+🔹 Final Summary  
+
+Java is strictly Pass by Value.
+
+For primitives → copy of value is passed.
+
+For objects → copy of reference is passed (so object data can change, but reassignment won’t affect original) .
+
