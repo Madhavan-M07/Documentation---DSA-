@@ -92,5 +92,54 @@ sb.reverse();  // "dcba"
 
 
 8. Functions :
+public static int add(int a, int b) {
+    return a + b;
+}
+
+System.out.println(add(3,4)); // 7
+
+9.OOP Quick Glance :
+
+class Student {
+    String name;
+    int age;
+
+    Student(String n, int a) {
+        name = n;
+        age = a;
+    }
+
+    void printInfo() {
+        System.out.println(name + " " + age);
+    }
+}
+
+Student s1 = new Student("Madhavan", 21);
+s1.printInfo();
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+10. Collections Framework (Super Useful for DSA)
+
+1. ArrayList :
+
+import java.util.*;
+ArrayList<Integer> list = new ArrayList<>();
+list.add(10);
+list.add(20);
+System.out.println(list.get(1)); // 20
+
+2 . HashSet :
+HashSet<Integer> set = new HashSet<>();
+set.add(1);
+set.add(2);
+System.out.println(set.contains(1)); // true
+
+3 . HashMap :
+HashMap<String, Integer> map = new HashMap<>();
+map.put("apple", 2);
+map.put("banana", 5);
+System.out.println(map.get("apple")); // 2
+
+
 
 
