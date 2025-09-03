@@ -90,5 +90,76 @@ Your friend clearing doesn’t reduce your chances. Zoho needs 100s of people ev
 **You already have the base skills in Java. Now you just need to build logic by practice.**
 **Doubt = normal. But don’t let doubt stop the daily problems.**
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------                                          **  Questions and Answer Need to Know before Attending Product Based Company :**
+
+**1. Arrays & Math Basics (Easy Level)**
+   Learn how to:
+
+Traverse arrays (for, for-each)
+
+Find min/max, sum, average
+
+Reverse an array
+
+Rotate array
+
+Prefix sum
+
+Must-Solve Problems:
+
+✅ Find Largest/Smallest in array
+
+✅ Reverse array in-place
+
+✅ Move all zeros to end
+
+✅ Kadane’s Algorithm (max subarray sum)
+
+
+**2. Strings (Important for Interviews)**
+
+Learn:
+
+String traversal (charAt)
+
+Palindrome check
+
+Anagram check
+
+Frequency counting (HashMap / Array[26])
+
+Must-Solve Problems:
+
+✅ Reverse a string
+
+✅ Check palindrome
+
+✅ Longest substring without repeating chars
+
+✅ Count vowels/consonants
+
+👉 Use StringBuilder for modifications.
+
+
+**3. Hashing (HashMap / HashSet)**
+
+Learn:
+
+Store frequency of elements
+
+Detect duplicates
+
+Two Sum problem
+
+Must-Solve:
+
+✅ Two Sum
+
+✅ Subarray with sum = K
+
+✅ Longest Consecutive Sequence
+
+
+
+
 
