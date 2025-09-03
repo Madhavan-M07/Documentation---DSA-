@@ -140,6 +140,36 @@ map.put("apple", 2);
 map.put("banana", 5);
 System.out.println(map.get("apple")); // 2
 
+4.Queue :
+Queue<Integer> q = new Queue<>();
+q.add(10);
+q.add(20);
+System.out.println(q.poll()); // 10 (Removes)  FIFO - FIRST IN FIRST OUT
+
+5. STACK .
+Stack<Integer>  s = new Stack<>();
+s.push(10);
+s.push(20);
+System.out.println(s.pop()); //LIFO Removed 20
+
+// Important Keywords :
+
+static -- belongs to class not object.
+final -- constant cannot be changed .
+this -- refers to current object .
+super -- refers to parent class .
+
+// Time Complexity :
+Array Acess  :  O(1)
+Array Search : O(n)
+HashMap (get/put) : O(1) Average .
+Sorting(Array.sort) : O(n log n)
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// With this much Java, you can start solving DSA problems on LeetCode / GFG.
+Next step is to apply these basics to problems like arrays, strings, hashmaps, recursion, and dynamic programming.
+
+
 
 
 
