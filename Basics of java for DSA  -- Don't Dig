@@ -169,7 +169,13 @@ Sorting(Array.sort) : O(n log n)
 // With this much Java, you can start solving DSA problems on LeetCode / GFG.
 Next step is to apply these basics to problems like arrays, strings, hashmaps, recursion, and dynamic programming.
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+⚡ Formula to "Hit Hard"
 
+Pattern recognition → Fast brute force idea → Optimization → Dry run → Clean code.
 
+Confidence comes from simulating interviews daily.
+
+Interviewer sees not just code → but your thinking weapon.
 
 
