@@ -160,6 +160,136 @@ Must-Solve:
 ✅ Longest Consecutive Sequence
 
 
+**4. Searching & Sorting**
+
+Learn:
+
+Binary Search (Iterative + Recursive)
+
+Lower bound / Upper bound
+
+Sorting (Arrays.sort / custom Comparator)
+
+Must-Solve:
+
+✅ Binary Search
+
+✅ Search in Rotated Sorted Array
+
+✅ Merge Intervals
+
+✅ Sort Colors (Dutch Flag Problem)
 
 
+**5. Recursion & Backtracking**
 
+Learn:
+
+Base case & recursive calls
+
+Print numbers 1 → N
+
+Factorial, Fibonacci
+
+Backtracking → N-Queens, Rat in a Maze
+
+Must-Solve:
+
+✅ Factorial
+
+✅ Fibonacci
+
+✅ Subset / Subsequence generation
+
+✅ N-Queens
+
+
+**6. Linked List**
+
+Learn:
+
+Node class & traversal
+
+Reverse Linked List
+
+Detect cycle (Floyd’s Algorithm)
+
+Must-Solve:
+
+✅ Reverse Linked List
+
+✅ Merge Two Sorted Lists
+
+✅ Detect Cycle
+
+**7. Stacks & Queues**
+
+Learn:
+
+Stack using Stack<Integer>
+
+Queue using LinkedList
+
+Monotonic Stack
+
+Must-Solve:
+
+✅ Valid Parentheses
+
+✅ Next Greater Element
+
+✅ Sliding Window Maximum
+
+
+**8. Trees**
+
+Learn:
+
+Binary Tree basics (Node class)
+
+Traversals (Inorder, Preorder, Postorder, Level order)
+
+Must-Solve:
+
+✅ Max Depth of Binary Tree
+
+✅ Lowest Common Ancestor
+
+✅ Serialize & Deserialize Binary Tree
+
+**9. Graphs**
+
+Learn:
+
+BFS & DFS
+
+Union-Find
+
+Dijkstra’s Algorithm
+
+Must-Solve:
+
+✅ Number of Islands
+
+✅ Clone Graph
+
+✅ Shortest Path in Graph
+
+
+**10. Dynamic Programming (Advanced)**
+
+Learn patterns:
+
+1D DP (Fibonacci, Climbing Stairs)
+
+2D DP (Knapsack, LCS)
+
+Must-Solve:
+
+✅ Climbing Stairs
+
+✅ Coin Change
+
+✅ Longest Common Subsequence
+
+✅ DP on Grids (Unique Paths, Min Path Sum)
