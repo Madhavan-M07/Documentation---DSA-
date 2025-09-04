@@ -1,1 +1,242 @@
+1 . Contains Duplicate :
+Given an integer array nums, return true if any value appears more than once in the array, otherwise return false.
+Example 1:
 
+Input: nums = [1, 2, 3, 3]
+
+Output: true
+
+Example 2:
+
+Input: nums = [1, 2, 3, 4]
+
+Output: false
+
+Thinking :
+
+1. Brute Force Approach : 
+
+public boolean containsDuplicate(int[] nums) {
+    for (int i = 0; i < nums.length; i++) {
+        for (int j = i + 1; j < nums.length; j++) {  // start from i+1 to avoid self-comparison
+            if (nums[i] == nums[j]) {
+                return true; // duplicate found
+            }
+        }
+    }
+    return false; // no duplicates
+}
+
+
+// This is called brute force thinking
+
+🔎 Time Complexity Analysis
+
+Outer loop (i from 0 to n-1): runs n times.
+
+Inner loop (j from i+1 to n-1):
+
+When i = 0, inner loop runs ~n times.
+
+When i = 1, inner loop runs ~n-1 times.
+
+When i = 2, inner loop runs ~n-2 times.
+
+…
+
+When i = n-1, inner loop runs 0 times.
+
+So the total number of comparisons is:
+(n−1)+(n−2)+(n−3)+...+1
+
+✅ Final Answer
+
+Time Complexity: O(n²)
+Because in the worst case (no duplicates), we check almost every pair of elements.
+
+Space Complexity: O(1)
+No extra data structures used.
+
+⚡ That’s why for large nums (like length = 10⁵), this brute force approach becomes too slow and we prefer the HashSet solution (O(n)).
+
+
+Optimal Approach :
+
+import java.util.*;
+
+public class Main {
+    public static boolean hasDuplicates(int[] nums) {  // made static
+        HashSet<Integer> seen = new HashSet<>();
+        for (int num : nums) {  // fixed enhanced for loop
+            if (seen.contains(num)) {
+                return true;
+            }
+            seen.add(num);
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] nums = new int[n];
+        for (int i = 0; i < n; i++) {
+            nums[i] = sc.nextInt();
+        }
+
+        boolean result = hasDuplicates(nums);  // returns boolean
+        System.out.println(result);  // print result
+    }
+}
+
+// Understanding : Optimal Approach 
+// HashSet Properties
+
+// Checking if an element exists (seen.contains(num)) is O(1) on average.
+
+// Adding an element (seen.add(num)) is also O(1) on average.
+
+// Looping Through the Array
+
+// We only scan the array once → O(n).
+// So overall:
+
+// Time Complexity: O(n) (instead of O(n²))
+
+// Space Complexity: O(n) (to store seen elements in HashSet)
+
+// nums = [1, 2, 3, 3]
+
+// Steps:
+
+// seen = {}
+
+// Read 1: not seen → add → seen = {1}
+
+// Read 2: not seen → add → seen = {1,2}
+
+// Read 3: not seen → add → seen = {1,2,3}
+
+// Read 3: already in seen → return true
+
+// Why is it Optimal?
+
+// Brute force → checks every pair (wasteful).
+
+// HashSet → remembers what we’ve seen, so we only check once per element.
+
+// For very large arrays (say n = 100,000):
+
+// Brute force → ~5,000,000,000 comparisons 😵
+
+// HashSet → just 100,000 checks 🚀
+
+
+1.1. Brute Force (O(n²), O(1))
+
+✅ Advantage: No extra memory.
+
+❌ Disadvantage: Extremely slow for large arrays.
+
+🚫 Rarely acceptable in interviews (only for learning basics).
+
+2. HashSet (O(n), O(n))
+
+✅ Advantage: Fastest in practice (linear time).
+
+✅ Easy to implement.
+
+❌ Uses extra memory (up to O(n)).
+
+⭐ Best general-purpose solution (this is what most candidates use in LeetCode/Interviews).
+
+3. Sorting (O(n log n), O(1))
+
+✅ Advantage: No extra memory (apart from sorting overhead).
+
+❌ Slower than HashSet because of sorting.
+
+⭐ Best when the interviewer says:
+
+“Can you solve it without extra memory?”
+
+
+4. Frequency Array / Bitset (O(n), O(range))
+
+✅ Advantage: Super fast (linear).
+
+❌ Disadvantage: Needs numbers to be within a small known range (like 0 ≤ num ≤ 1e6).
+
+⭐ Best in competitive programming or special constraints problems.
+
+Final Verdict
+
+In real-world coding interviews (LeetCode style):
+👉 HashSet (O(n)) is the best approach.
+Because it balances speed + simplicity.
+
+If interviewer asks “no extra memory”:
+👉 Use Sorting (O(n log n), O(1)).
+
+If numbers are small and range-limited:
+👉 Use Frequency Array / Bitset (O(n), O(range)).
+
+
+Approch : 3 = > when no memory is used :
+
+import java.util.*;
+
+public class Main {
+    public static boolean hasDuplicates(int[] nums) {
+        Arrays.sort(nums); // O(n log n)
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] == nums[i - 1]) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] nums = new int[n];
+        for (int i = 0; i < n; i++) {
+            nums[i] = sc.nextInt();
+        }
+        System.out.println(hasDuplicates(nums));
+    }
+}
+
+4.Frequency Array / Boolean Array (O(n), O(maxValue) space) :
+
+Works only if you know the range of numbers (like 0 ≤ nums[i] ≤ 10⁶).
+
+Create a boolean array of size maxValue + 1.
+
+Mark each number as seen.
+
+If a number is already seen, return true.
+
+public static boolean hasDuplicates(int[] nums) {
+    int maxVal = 1000000; // assume numbers are ≤ 1e6
+    boolean[] seen = new boolean[maxVal + 1];
+    for (int num : nums) {
+        if (seen[num]) {
+            return true;
+        }
+        seen[num] = true;
+    }
+    return false;
+}
+
+✅ Summary of Approaches:
+
+Brute force: O(n²), O(1) → not practical.
+
+HashSet: O(n), O(n) → best general solution.
+
+Sorting: O(n log n), O(1) → good when you want to avoid extra memory.
+
+Frequency array / Bitset: O(n), O(range) → best when values are small and range is known.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
