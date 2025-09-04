@@ -2,3 +2,22 @@ Time Complexity :
 Tc ! = time taken .
 
 means : The Rate at Which the timetaken increases with respect to the Input Size.
+
+Represented in Big(0) Notation => O(n)
+
+1. Always calculate time complexity in wrost case scenario .
+Three types :
+1. Best Case
+2.Wrost Case
+3.Average Case
+
+
+For Nested For Loops - >  O(n^2)
+
+
+2. Space Complexity - Memory Space the Program Takes .
+ Auxilary space + Input Space
+
+c = a + b;  c => auxilary space -> extra space and a and b are input size
+
+1. Never do an change on input data ...There is no problem to use extra space ..but dont tamper a data => Tell to the Interviewer
