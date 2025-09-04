@@ -293,3 +293,32 @@ Must-Solve:
 ✅ Longest Common Subsequence
 
 ✅ DP on Grids (Unique Paths, Min Path Sum)
+
+
+**💻 Step 4: Skills to Sharpen (Next 2 Months)**
+
+Since you said most are basics only, focus on just enough to clear interviews:
+
+Frontend (Main Strength)
+
+JavaScript (DOM, ES6, promises, async/await, array methods).
+
+ReactJS basics (hooks, props, state, components).
+
+Build 2–3 mini React projects (portfolio, todo app, blog).
+
+Backend/DB (Secondary)
+
+SQL (Joins, Group By, Aggregations, CRUD).
+
+Basic Node.js + Express (just 1–2 small projects).
+
+DSA (Interview Survival)
+
+Arrays, Strings, HashMap, Sorting, Searching → solve 30–40 problems (LeetCode easy/medium).
+
+Focus on pattern building not just syntax.
+
+Cloud (Optional for now)
+
+Just know basic AWS/Azure services (S3, EC2, Lambda, CI/CD). Enough to say "I explored Cloud while learning."
