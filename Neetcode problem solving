@@ -240,3 +240,115 @@ Sorting: O(n log n), O(1) → good when you want to avoid extra memory.
 
 Frequency array / Bitset: O(n), O(range) → best when values are small and range is known.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2. Anagram Checking : 
+
+1. Brute Force Solution :
+
+class Solution {
+    public boolean isAnagram(String s, String t) {
+      if(s.length() != t.length()){
+        return false;
+      }
+      char[] arr1 = s.toCharArray();
+      char[] arr2 = t.toCharArray();
+
+      Arrays.sort(arr1);
+      Arrays.sort(arr2);
+
+      return Arrays.equals(arr1,arr2);
+
+    }
+}
+
+// Psedo Code :
+// 1. first check the length of the both strings ..if not equal return false
+// 2. And then convert in to charArray
+// 3.Sort the Array and check the equality
+
+Example 1
+
+s = "racecar", t = "carrace"
+
+Step 1: Convert strings to char arrays
+arr1 = ['r','a','c','e','c','a','r']
+arr2 = ['c','a','r','r','a','c','e']
+
+Step 2: Sort both arrays
+
+Sorting is done internally (like quicksort/dual-pivot quicksort in Java). Let’s track it conceptually:
+
+For arr1:
+
+Original: ['r','a','c','e','c','a','r']
+
+After sorting: ['a','a','c','c','e','r','r']
+
+For arr2:
+
+Original: ['c','a','r','r','a','c','e']
+
+After sorting: ['a','a','c','c','e','r','r']
+
+So now:
+
+arr1 = ['a','a','c','c','e','r','r']
+arr2 = ['a','a','c','c','e','r','r']
+
+Step 3: Compare with Arrays.equals
+
+Compare index 0: 'a' == 'a'
+
+Compare index 1: 'a' == 'a'
+
+Compare index 2: 'c' == 'c'
+
+Compare index 3: 'c' == 'c'
+
+Compare index 4: 'e' == 'e'
+
+Compare index 5: 'r' == 'r'
+
+Compare index 6: 'r' == 'r'
+
+✅ All characters match → return true.
+
+2. Optimized Approach :
+Approach 2: HashMap / Frequency Count (Optimal)
+
+Count the frequency of each character in both strings.
+
+Compare counts.
+
+Time complexity: O(n)
+
+Space complexity: O(1) (since only 26 lowercase letters)
+✅ Best Approach: Use frequency counting (Approach 2) because it’s O(n) and space efficient.
+Sorting (Approach 1) is fine for quick solutions but not optimal.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+public class Main {
+    public static boolean isAnagram(String s, String t) {
+        if (s.length() != t.length()) return false;
+
+        int[] count = new int[26];
+
+        for (char c : s.toCharArray()) {
+            count[c - 'a']++;
+        }
+
+        for (char c : t.toCharArray()) {
+            count[c - 'a']--;
+        }
+
+        for (int val : count) {
+            if (val != 0) return false;
+        }
+
+        return true;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(isAnagram("racecar", "carrace")); // true
+        System.out.println(isAnagram("jar", "jam"));         // false
+    }
+}
+
