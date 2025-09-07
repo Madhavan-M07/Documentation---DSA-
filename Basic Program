@@ -132,5 +132,159 @@ public class OptimizedDivisors {
 Enter a number: 28
 Divisors of 28 are: [1, 2, 4, 7, 14, 28]
 
+4. Prime Number
+
+Optimal Approach :
+A prime number is a number greater than 1 that has only two divisors: 1 and itself.
+
+Examples:
+
+Prime → 2, 3, 5, 7, 11, 13
+
+Not Prime → 4 (divisible by 2), 9 (divisible by 3)
+import java.util.Scanner;
+
+public class PrimeNumber {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Input number
+        System.out.print("Enter a number: ");
+        int n = sc.nextInt();
+
+        boolean isPrime = true;
+
+        // Prime check: number must be > 1
+        if (n <= 1) {
+            isPrime = false;
+        } else {
+            // Check divisibility from 2 to sqrt(n)
+            for (int i = 2; i * i <= n; i++) {
+                if (n % i == 0) {
+                    isPrime = false;
+                    break;
+                }
+            }
+        }
+
+        // Output result
+        if (isPrime) {
+            System.out.println(n + " is a Prime number.");
+        } else {
+            System.out.println(n + " is NOT a Prime number.");
+        }
+
+        sc.close();
+    }
+}
+
+Brute Force Approach :
+import java.util.Scanner;
+
+public class PrimeBruteForce {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Input number
+        System.out.print("Enter a number: ");
+        int n = sc.nextInt();
+
+        boolean isPrime = true;
+
+        // Prime must be greater than 1
+        if (n <= 1) {
+            isPrime = false;
+        } else {
+            // Check divisibility from 2 to n-1
+            for (int i = 2; i < n; i++) {
+                if (n % i == 0) {
+                    isPrime = false;
+                    break;
+                }
+            }
+        }
+
+        // Output result
+        if (isPrime) {
+            System.out.println(n + " is a Prime number.");
+        } else {
+            System.out.println(n + " is NOT a Prime number.");
+        }
+
+        sc.close();
+    }
+}
 
 
+GCD :
+The Greatest Common Divisor (GCD) of two numbers is the largest number that divides both of them completely.
+
+Examples:
+
+GCD(12, 18) = 6
+
+GCD(14, 28) = 14
+
+GCD(8, 9) = 1 (co-prime numbers)
+
+Java Program – Brute Force Method
+
+Check all numbers from 1 to min(a, b) and find the largest divisor.
+
+import java.util.Scanner;
+
+public class GCD_BruteForce {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Input numbers
+        System.out.print("Enter first number: ");
+        int a = sc.nextInt();
+        System.out.print("Enter second number: ");
+        int b = sc.nextInt();
+
+        int gcd = 1;
+
+        // Brute force: check all numbers up to min(a, b)
+        for (int i = 1; i <= Math.min(a, b); i++) {
+            if (a % i == 0 && b % i == 0) {
+                gcd = i;
+            }
+        }
+
+        System.out.println("GCD of " + a + " and " + b + " is: " + gcd);
+
+        sc.close();
+    }
+}
+Java Program – Euclidean Algorithm (Efficient)
+import java.util.Scanner;
+
+public class GCD_Euclidean {
+    public static int gcd(int a, int b) {
+        // Euclidean algorithm
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Input numbers
+        System.out.print("Enter first number: ");
+        int a = sc.nextInt();
+        System.out.print("Enter second number: ");
+        int b = sc.nextInt();
+
+        System.out.println("GCD of " + a + " and " + b + " is: " + gcd(a, b));
+
+        sc.close();
+    }
+}
+Enter first number: 48
+Enter second number: 18
+GCD of 48 and 18 is: 6
