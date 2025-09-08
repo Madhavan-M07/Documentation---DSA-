@@ -145,6 +145,33 @@ public class ArmstrongNumber {
 Enter a number: 153
 153 is an Armstrong number.
 
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int original = n;
+        int ams = 0;
+        int N = String.valueOf(n).length();
+        
+        while(n > 0) {
+            int ld = n % 10;
+            ams = ams + (int)Math.pow(ld, N);  // fixed
+            n /= 10;
+        }
+        
+        if(original == ams) {
+            System.out.print("Armstrong Number");
+        } else {
+            System.out.print("Not an Armstrong");
+        }
+    }
+}
+
+Math.pow(ld, N) always returns a double, even if the inputs are integers.
+
+But in your code, ams is declared as an int, so Java complains about “possible lossy conversion from double to int”.
+
 
 2.Palindrome :
 import java.util.Scanner;
