@@ -1,4 +1,51 @@
- 1 . Amstrong Number :
+Count Digit :
+N = 12345
+Output:5
+pesudo code :
+Brute Force Approach :
+1. we need to extract the digit and keep the count variable outside
+extract last digit while n>0
+2.And then remove other digit in it
+import java.util.*;
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+       int cnt = 0;
+        while(n>0){
+            cnt++;
+            n/=10;
+        }
+        
+        System.out.print(cnt);
+    }
+}
+
+2.Using Function :
+import java.util.*;
+public class Main {
+public static int countDigit(int num){
+     int cnt = 0;
+     while(num>0){
+         cnt++;
+         num/=10;
+     }
+     return cnt;
+}
+
+public static void main(String[] args){
+    Scanner sc = new Scanner(System.in);
+    int N = sc.nextInt();
+    System.out.println("Number :" + N);
+    int result = countDigit(N);
+    System.out.print("Count of Digit :" + result);
+}
+}
+
+
+
+
+1 . Amstrong Number :
 
 import java.util.Scanner;
 
