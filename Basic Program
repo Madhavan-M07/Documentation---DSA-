@@ -271,7 +271,7 @@ Divisors of 28 are: [1, 2, 4, 7, 14, 28]
 
 ⚡Pro tip: If you need fast insertion + sorted + duplicate-free, use TreeSet.
 If you need fast insertion + duplicates allowed, use ArrayList (but sort manually later).
-
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 4. Prime Number
 
@@ -356,6 +356,62 @@ public class PrimeBruteForce {
     }
 }
 
+Time Complexity : O(root n)
+1. O(log n)
+
+Means the number of steps grows very slowly as n increases.
+
+Usually comes from problems where input is divided in half each step.
+
+Example: Binary Search
+
+For n = 1,000,000 → only ~20 steps (because log₂(1,000,000) ≈ 20).
+
+👉 Faster than O(√n) and O(n).
+
+2. O(n log n)
+
+Slightly slower than linear but still much better than quadratic.
+
+Common in efficient sorting algorithms (Merge Sort, Quick Sort, Heap Sort).
+
+Example: Sorting 1,000,000 numbers → ~20,000,000 operations (vs 1 trillion in O(n²)).
+
+👉 Slower than O(n), faster than O(n²).
+3. Relative Growth Comparison
+
+Let’s rank them from best (fastest) to worst (slowest):
+
+O(1) → Constant time (best)
+
+O(log n) → Grows very slowly
+
+O(√n) → Faster than linear but slower than log
+
+O(n) → Linear growth
+
+O(n log n) → Slightly worse than linear
+
+O(n²) → Quadratic (bad for large n)
+
+O(2ⁿ), O(n!) → Exponential/factorial (impossible for big n)
+
+4. Analogy (to visualize 🚀)
+
+Imagine you have to check 1,000,000 items:
+
+O(1): Check directly → 1 step
+
+O(log n): Halve each time → ~20 steps
+
+O(√n): Walk √n → 1,000 steps
+
+O(n): Check all → 1,000,000 steps
+
+O(n log n): Sort them → 20,000,000 steps
+
+O(n²): Compare everything with everything → 1,000,000,000,000 steps
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 GCD :
 The Greatest Common Divisor (GCD) of two numbers is the largest number that divides both of them completely.
@@ -385,6 +441,8 @@ public class GCD_BruteForce {
         int b = sc.nextInt();
 
         int gcd = 1;
+//We start with gcd = 1 because 1 is always a divisor of any number.
+//This variable will store the largest number that divides both a and b.
 
         // Brute force: check all numbers up to min(a, b)
         for (int i = 1; i <= Math.min(a, b); i++) {
