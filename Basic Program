@@ -236,6 +236,8 @@ public class Divisors {
 Enter a number: 28
 Divisors of 28 are:
 1 2 4 7 14 28
+For i starts from => 1 to that n so for loop goes from 1 to 10
+And checks for n%i ==0 => then it is a divisors .
 
 import java.util.Scanner;
 import java.util.TreeSet;
@@ -266,6 +268,10 @@ public class OptimizedDivisors {
 }
 Enter a number: 28
 Divisors of 28 are: [1, 2, 4, 7, 14, 28]
+
+⚡Pro tip: If you need fast insertion + sorted + duplicate-free, use TreeSet.
+If you need fast insertion + duplicates allowed, use ArrayList (but sort manually later).
+
 
 4. Prime Number
 
