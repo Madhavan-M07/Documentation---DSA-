@@ -564,3 +564,18 @@ public class Main{
 }
  Fibonacci series up to 5 terms: 0 1 1 2 3
     
+🔹 Step 4: Walk Through Example (n = 5)
+
+Start: a = 0, b = 1
+
+Loop 1: print 0, next → a=1, b=1
+
+Loop 2: print 1, next → a=1, b=2
+
+Loop 3: print 1, next → a=2, b=3
+
+Loop 4: print 2, next → a=3, b=5
+
+Loop 5: print 3, next → a=5, b=8
+
+Output: 0 1 1 2 3
