@@ -487,3 +487,30 @@ public class GCD_Euclidean {
 Enter first number: 48
 Enter second number: 18
 GCD of 48 and 18 is: 6
+
+🔹 Solution With temp
+
+That’s why we store the old b in temp before changing b:
+
+int temp = b;   // save original b
+b = a % b;      // calculate remainder
+a = temp;       // now assign original b into a
+
+
+This correctly implements the formula:
+
+new a = old b
+
+new b = old a % old b
+
+🔹 Example (48, 18)
+
+Step 1:
+
+temp = 18
+
+b = 48 % 18 = 12
+
+a = 18
+
+Now pair becomes (18, 12) ✅ which matches GCD(48, 18) = GCD(18, 12)
