@@ -710,3 +710,27 @@ That’s exactly how you design the loop.
 )
 (a,b)→(b,a+b)
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.print("Enter number of terms: ");
+        int n = sc.nextInt();
+        
+        int a = 0, b = 1; // starting values
+        
+        System.out.print("Fibonacci series up to " + n + " terms: ");
+        
+        while (n > 0) {
+            System.out.print(a + " "); // print current term
+            int c = a + b; // next term
+            a = b; // move forward
+            b = c;
+            n--; // decrease count
+        }
+        
+        sc.close();
+    }
+}
