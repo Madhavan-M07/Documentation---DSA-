@@ -579,3 +579,134 @@ Loop 4: print 2, next → a=3, b=5
 Loop 5: print 3, next → a=5, b=8
 
 Output: 0 1 1 2 3
+
+Great question 👌 — you don’t just want the code, you want to understand how to think about the loop when writing Fibonacci (or similar problems). Let’s break it down step by step:
+
+🔹 Step 1: Understand the Fibonacci Definition
+
+Mathematically:
+
+𝐹
+(
+𝑛
+)
+=
+𝐹
+(
+𝑛
+−
+1
+)
++
+𝐹
+(
+𝑛
+−
+2
+)
+F(n)=F(n−1)+F(n−2)
+
+with starting values:
+
+𝐹
+(
+0
+)
+=
+0
+,
+𝐹
+(
+1
+)
+=
+1
+F(0)=0,F(1)=1
+
+So each new term depends on the previous two terms.
+
+🔹 Step 2: Translate into Variables
+
+Since each new number depends on the previous two:
+
+Keep two variables: a (previous) and b (current).
+
+Compute the next number as c = a + b.
+
+Then shift forward:
+
+Old b becomes the new a.
+
+New c becomes the new b.
+
+🔹 Step 3: Think About the Loop
+
+👉 Ask yourself:
+
+What is repeating?
+
+Printing numbers.
+
+Updating a and b.
+
+How many times should it repeat?
+
+Exactly n times (for n terms).
+
+What changes each iteration?
+
+The values of a and b.
+
+So the loop simply repeats:
+
+Print current a.
+
+Compute c = a + b.
+
+Shift a = b, b = c.
+
+🔹 Step 4: Walk Through Example (n = 5)
+
+Start: a = 0, b = 1
+
+Loop 1: print 0, next → a=1, b=1
+
+Loop 2: print 1, next → a=1, b=2
+
+Loop 3: print 1, next → a=2, b=3
+
+Loop 4: print 2, next → a=3, b=5
+
+Loop 5: print 3, next → a=5, b=8
+
+Output: 0 1 1 2 3
+
+🔹 Step 5: General Thinking Template for Loops
+
+Whenever you get stuck:
+
+Identify what repeats (printing, calculation, updating).
+
+Decide how many times (based on input n).
+
+Decide what changes each time (like shifting a and b).
+
+That’s exactly how you design the loop.
+
+✅ So the loop in Fibonacci isn’t magic — it’s just repeating the update rule
+
+(
+𝑎
+,
+𝑏
+)
+→
+(
+𝑏
+,
+𝑎
++
+𝑏
+)
+(a,b)→(b,a+b)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
