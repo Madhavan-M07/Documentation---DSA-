@@ -1,0 +1,14 @@
+Recursion :  A Function Called By itslef until a specific Conditions Meet .
+Example :
+f(){
+ print(1)
+ f();
+  }
+main(){
+   f();
+  }
+
+This Function called by itslef and goes on ..because it does not have an exit condition .It is called Infinite Recursion . it runs out of memory => stack overflow .
+In stack  f(1) => f(2) => f(3) => f(4) ... not been completed it is waiting in stack . segmentation error .
+
+Base condition => condition to stop a recursion call .
