@@ -12,3 +12,257 @@ This Function called by itslef and goes on ..because it does not have an exit co
 In stack  f(1) => f(2) => f(3) => f(4) ... not been completed it is waiting in stack . segmentation error .
 
 Base condition => condition to stop a recursion call .
+
+2. Basic Recursion Problems :
+
+i, Print Name N Times Using Recursion :
+
+// Print Name N times using Recursion :
+// 5 => 5 times name should be printed .
+
+
+import java.util.*;
+public class Main{
+    
+    public static void PrintName(int n){
+        
+          if(n==0){
+          return;
+          }
+        
+        System.out.println("Madhavan");
+          n--;
+        PrintName(n);
+      
+    }
+    
+    
+    public static void main(String[] args){
+        
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        PrintName(n);    
+    }
+}
+Your idea in plain words
+
+You created a recursive function PrintName(int n) that takes a number n.
+
+The idea: if n = 5, then print "Madhavan" and keep reducing n until the function stops.
+
+You wrote a base condition:
+
+if(n < 0){
+    return;
+}
+
+
+So your stopping point is when n goes below 0.
+That means:
+
+If you call with n = 5, it will go like → 5 → 4 → 3 → 2 → 1 → 0 → -1 → stop.
+
+Inside the function, you print the name first:
+
+System.out.print("Madhavan");
+
+
+This means the printing happens before the recursive call.
+
+Then you reduce n by 1:
+
+n--;
+PrintName(n);
+
+
+So each recursive call is with a smaller number.
+
+
+Another Approch :
+import java.util.*; 
+public class Main{
+    public static void printName(int i , int n){
+        if(i==n){
+            return;
+        }
+           System.out.println("Madhavan");
+           printName(i+1 , n);
+    }
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        printName(0,n);
+    }
+}
+
+// 0 => madhavan -> false
+// 1 => madhavan -> false
+// 2 => madhavan -> false
+
+Comparing with your first approach
+
+First approach (PrintName(n)): you start with the number n and count downwards until 0.
+
+This approach (printName(i, n)): you start with 0 and count upwards until n.
+
+Both give the same result, just a different way of thinking:
+
+Count down: Stop when n==0.
+
+Count up: Stop when i==n.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Print 1 to N linearly using Recursion :
+
+// Print 1 to N linearly using recursion :
+// N = 3
+
+// it should print 1,2,3
+
+import java.util.*;
+public class Main{
+    public static void printNumber(int i , int n){
+        if(i>n){
+            return;
+        }
+        
+        System.out.println(i);
+        printNumber(i+1 , n);
+        
+        
+        
+        
+    }
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        printNumber(1,n);
+    }
+}
+
+
+// 1 => false => 1
+// 2 => false => 2
+// 3 > 3 fails so => 3
+// 4> 3 => return => base condition meets so .. pop each element in the stack space .
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Print N -> 1 
+
+import java.util.*;
+public class Main{
+    public static void printNumber(int i){
+        if(i == 0){
+            return;
+        }
+        System.out.println(i);   // print before recursion
+        printNumber(i - 1);      // recursive call
+    }
+
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        printNumber(n);
+    }
+}
+
+Dry run for n = 3
+
+Call → printNumber(3)
+
+3 == 0? false
+
+Print → 3
+
+Call → printNumber(2)
+
+Call → printNumber(2)
+
+2 == 0? false
+
+Print → 2
+
+Call → printNumber(1)
+
+Call → printNumber(1)
+
+1 == 0? false
+
+Print → 1
+
+Call → printNumber(0)
+
+Call → printNumber(0)
+
+0 == 0? true → stop recursion
+                 ------------------------------------------------------------------------------------------------------------------------------------------------
+
+4. Print 1 to N using Backttracking :
+
+// Print  1 to N using Back Tracking
+
+import java.util.*;
+public class Main{
+    public static voidn printName(int i , int n){
+        //base condition
+        if(i<1){
+            return;
+        }
+        
+        printName(i-1 ,n);
+        System.out.println(i);
+        
+    }
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        printName(3,3);
+    }
+}
+
+// 3,3
+3<3 => false
+again call 
+2,3
+2<1 => false
+1<1 => false
+0,3 => 
+0<1 => true => base condition meet => 
+
+This approach is called Backtracking in recursion .
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// Print  N to 1 using Back Tracking
+
+import java.util.*;
+public class Main{
+    public static void printName(int i , int n){
+        //base condition
+        if(i>n){
+            return;
+        }
+        
+        printName(i+1 ,n);
+        System.out.println(i);
+        
+    }
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        printName(1,3);
+    }
+}
+
+
+
+// 1 3 
+// 1>3 => false
+// print(2,3)
+// 2>3 => false
+
+// 3>3 => false
+// print(4,3)
+// => true
+// backtrack and goes to => 3 ,2 , 1
+
+
+
+
