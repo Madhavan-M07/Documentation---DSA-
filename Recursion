@@ -338,7 +338,11 @@ Nnumber(2,1,5)  -> return
 Nnumber(1,0,5)  -> return
 main ends
 
+Key Difference from return version
 
+In the return version, every function call was depending on the return value from the deeper call, so values had to bubble back.
+
+In this void print version, nothing is bubbling back. Once the base case prints, the earlier calls just finish one by one without carrying values.
 
 
 
