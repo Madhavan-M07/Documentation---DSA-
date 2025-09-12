@@ -263,6 +263,82 @@ public class Main{
 // => true
 // backtrack and goes to => 3 ,2 , 1
 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
+Problems on Functional Recursion :
+
+1. SUM OF FIRST N numbers : Two ways : Parameterized , Functional
+
+1 . SUM OF FIRST NATURAL NUMBER => N = 5 => 1+2+3+4+5 = 15
+
+import java.util.*;
+public class Main{
+    
+    public static int Nnumber(int i , int sum , int N){
+        
+        if(i>N){
+            return sum;
+        }
+        
+        return Nnumber(i+1 , sum+i , N);
+        
+    }
+    
+    public static void main(String[] args){
+        
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        
+      int ans =  Nnumber(1,0,N);
+      System.out.print(ans);
+      
+        
+    }
+}
+
+public class Main {
+    public static void Nnumber(int i, int sum, int N) {
+        if (i > N) {
+            System.out.println(sum);
+            return; // exit this call
+        }
+        Nnumber(i + 1, sum + i, N); // recursive call
+    }
+
+    public static void main(String[] args) {
+        int N = 5;
+        Nnumber(1, 0, N);
+    }
+}
+Nnumber(1,0,5) is called → not base → calls Nnumber(2,1,5)
+
+Nnumber(2,1,5) is called → not base → calls Nnumber(3,3,5)
+
+Nnumber(3,3,5) is called → not base → calls Nnumber(4,6,5)
+
+Nnumber(4,6,5) is called → not base → calls Nnumber(5,10,5)
+
+Nnumber(5,10,5) is called → not base → calls Nnumber(6,15,5)
+
+Nnumber(6,15,5) is called → base met → prints 15 → returns
+
+Stack behavior here
+
+Yes ✅ all those calls (1→2→3→4→5) are still sitting in the call stack when the base case runs.
+
+BUT: after the base case prints and returns, each previous call also just returns without doing anything extra.
+
+So the unwinding looks like this:
+Call stack (deepest first):
+
+Nnumber(6,15,5) -> base case -> prints 15 -> return
+Nnumber(5,10,5) -> nothing after recursive call -> return
+Nnumber(4,6,5)  -> return
+Nnumber(3,3,5)  -> return
+Nnumber(2,1,5)  -> return
+Nnumber(1,0,5)  -> return
+main ends
+
+
 
 
 
