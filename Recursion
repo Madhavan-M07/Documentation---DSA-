@@ -420,5 +420,6 @@ If you know input will always be ≥ 1, then n == 1 is enough.
 
 If you want a universal factorial function (that works for 0! too), use n == 0 || n == 1.
 
+fact(0) → 0 * fact(-1) → infinite recursion → StackOverflowError
 
 
