@@ -345,4 +345,80 @@ In the return version, every function call was depending on the return value fro
 In this void print version, nothing is bubbling back. Once the base case prints, the earlier calls just finish one by one without carrying values.
 
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Factorial of Number Using Recursion :
+
+public class Main {
+    public static int factorial(int n) {
+        // Base case
+        if (n == 0 || n == 1) {
+            return 1;
+        }
+
+        // Recursive case
+        return n * factorial(n - 1);
+    }
+
+    public static void main(String[] args) {
+        int num = 5;
+        int result = factorial(num);
+        System.out.println("Factorial of " + num + " is: " + result);
+    }
+}
+
+factorial(5)
+= 5 * factorial(4)
+= 5 * (4 * factorial(3))
+= 5 * (4 * (3 * factorial(2)))
+= 5 * (4 * (3 * (2 * factorial(1))))
+= 5 * (4 * (3 * (2 * 1)))
+= 120
+
+n == 0 || n == 1)  why here 0 .. if n is 1 we can return
+ChatGPT said:
+
+Excellent question 👌 You’re thinking in the right direction. Let’s carefully break it down.
+
+🔹 Factorial definition
+
+By mathematics:
+
+0! = 1
+1! = 1
+
+
+Both 0! and 1! are defined as 1.
+
+🔹 Why do we use (n == 0 || n == 1) in recursion?
+
+When writing recursion, we need a base case where the recursion stops.
+
+If we only use n == 1, then calling fact(0) would cause infinite recursion:
+
+fact(0) → 0 * fact(-1) → fact(-2) → fact(-3) ...
+
+
+which is wrong.
+
+Including n == 0 ensures the function works even if input is 0.
+
+🔹 Example
+
+If we only use if (n == 1) return 1;
+
+fact(5) works fine, because it will eventually reach fact(1).
+
+But fact(0) will fail (infinite recursion).
+
+If we use if (n == 0 || n == 1) return 1;
+
+Both fact(5) and fact(0) work correctly.
+
+🔹 Rule of thumb
+
+If you know input will always be ≥ 1, then n == 1 is enough.
+
+If you want a universal factorial function (that works for 0! too), use n == 0 || n == 1.
+
+
 
