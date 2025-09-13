@@ -712,3 +712,64 @@ f(7) = f(6) + f(5) = 8 + 5 = 13
 
 🔹 Final Answer
 f(7) = 13
+
+
+🔹 Recurrence Relation
+
+Your function:
+
+f(n) = f(n-1) + f(n-2)
+
+
+Each call makes two recursive calls (except base cases).
+
+So the recurrence is:
+
+T(n) = T(n-1) + T(n-2) + O(1)
+
+🔹 Growth Pattern
+
+The recursion tree has almost 2 branches per call.
+
+Height of recursion tree = n (since n → n-1 → n-2 … 0).
+
+At each level, calls roughly double.
+
+So the total number of calls ≈ 2^n.
+
+🔹 Exact Time Complexity
+
+Time Complexity: O(2^n) (exponential)
+
+Space Complexity: O(n) (stack depth due to recursion)
+
+🔹 Example
+
+For f(7):
+
+Total calls made = 41
+
+For f(50), calls will be in billions → extremely slow.
+
+🔹 Why so slow?
+
+Because the function recomputes the same values again and again.
+Example:
+
+f(5) is calculated multiple times inside the tree.
+
+f(3) is also repeated many times.
+
+🔹 Optimized Approaches
+
+Memoization (Top-Down DP) → Store results of already computed calls.
+
+Time Complexity: O(n)
+
+Space Complexity: O(n)
+
+Tabulation (Bottom-Up DP) → Iteratively build Fibonacci.
+
+Time Complexity: O(n)
+
+Space Complexity: O(1) (if we only store last two values).
