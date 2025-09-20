@@ -354,3 +354,86 @@ public class Main {
     }
 }
 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+import java.util.*;
+public class Main{
+    public static void main(String[] args){
+        int arr[] = {0 , 1 , 0 , 3 , 12};
+        int n = arr.length;
+        int j = 0;
+        for(int i = 0;i<n;i++){
+            if(arr[i]!=0){
+                arr[j] = arr[i];
+                j++;
+            }
+        }
+        
+        while(j<n){
+            arr[j] = 0;
+            j++;
+        }
+        
+        for(int num:arr){
+            
+            System.out.print(num + " ");
+        }
+    }
+}
+
+
+//Psudeo Code : 
+
+// 1.First I need to find all the non-zero element and move to j which means frontside of the array.
+// 2.Then after for loop gets completed fill the remaning j by 0.
+Iteration 1 = int n =5; int j = 0;
+
+i = 0<5
+arr[i] =! 0 but its 0 => false loop it does not go to if condition .
+then for loop increment to 
+
+i = 1 , j = 0  1<5 => true
+if(arr[1]!=0) yes 1 not equal to 5 so ,
+
+arr[0] = 1; so, the arr[] = [1 1 0 3 12]
+j++ // 1 
+
+i = 2 j=1
+2<5 => true 
+skip 
+
+i =3 j=1;
+3<5 => true
+arr[3]! = 0 , yes ..so 
+
+arr[1] = 3   [1 3 0 3 12]
+j++ //2 
+
+i = 4 j = 2 
+4<5 true ,
+arr[4] != 0 => yes 
+then arr[2] = 12;  [1 3 12 3 12]
+j++ // 3  
+
+Then,next step 5<5 fails
+go out of for loop.
+
+Another while condition i have made
+whikle(j<n)
+3<5
+arr[3] = 0   [1 3 12 0 12]
+j++ //4
+
+4<5
+arr[4] = 0  [ 1 3 12 0 0]
+j++ //5
+
+5<5 => out of an while loop exit
+
+And then , i need loop through an arr
+for(int num:arr){
+    System.out.print(num + " ");
+    
+}
+
+[1 3 12 0 0] => This is the whole logic of two pointer Approach
+
