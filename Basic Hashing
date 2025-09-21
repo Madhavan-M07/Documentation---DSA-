@@ -487,6 +487,51 @@ maxVal is unknown, very large, or keys are sparse (only few unique values).
 
 You need to handle arbitrary ints without huge memory consumption.
 
+import java.util.*;
+public class Main{
+    public static void main(String[] args){
+        Scanner sc= new Scanner(System.in);
+        int n = sc.nextInt();
+        int arr[] = new int[n];
+        for(int i = 0; i<n;i++){
+            
+            arr[i] = sc.nextInt(); //Array Initialization .
+        }
+        
+        // Precompute
+        int[] hash = new int[13];
+        for(int i= 0 ; i<n;i++){
+            hash[arr[i]]++;
+        }
+        
+        int q = sc.nextInt();
+        
+        while(q-- >0){
+            
+            
+            int x = sc.nextInt();
+            System.out.print(hash[x]);
+
+            
+        }
+        
+    }
+}
+
+// input : 5
+// 2
+// 3
+// 4
+// 2
+// 1
+
+// q = 5;
+// 2
+// 3
+// 4
+// 5
+// 5
+
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Charcter Hashing :
 int[] freq = new int[26];
@@ -576,3 +621,52 @@ Lowercase → use c - 'a' trick to map 'a'..'z' → 0..25.
 Full ASCII → use int[256] and index by (int)c.
 
 Super fast for frequency queries, but array size grows with alphabet range.
+
+
+import java.util.*;
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        // Precompute Hash Frequency
+        int hash[] = new int[26];   //a-z
+        for(int i = 0; i<s.length();i++){
+            char c = s.charAt(i);
+            hash[c-'a']++;
+        }
+        
+        int q = sc.nextInt();
+        while(q-- > 0){
+            int ch = sc.next().charAt(0);
+            System.out.print(hash[ch - 'a']);
+        }
+        
+    }
+}
+
+For Both Captial and small Charcter:
+import java.util.*;
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        // Precompute Hash Frequency
+        int hash[] = new int[256];   //a-z
+        for(int i = 0; i<s.length();i++){
+            char c = s.charAt(i);
+            hash[c]++;
+        }
+        
+        int q = sc.nextInt();
+        while(q-- > 0){
+            int ch = sc.next().charAt(0);
+            System.out.print(hash[ch]);
+        }
+        
+    }
+}
+// s = aabc
+// hash[] =  0 1 2 3 ....25
+//           0 0 0 0 .....0
+                  
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
