@@ -341,3 +341,238 @@ Step	num	Action	freqMap Snapshot
 5	4	Add 4 with count 1	{2=2, 1=1, 3=1, 4=1}
 6	3	Increment count of 3 → 2	{2=2, 1=1, 3=2, 4=1}
 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Hashing | Maps | Time Complexity | Collisions | Division Rule of Hashing | 
+
+Array : [1,2,1,3,2]
+Queires : [1,3,4,2,10] = > Excepted Answers : 2,1,0,2,0
+
+Here ,
+1.Brute Force
+2.Array Based Hashing ( When max value is small )
+3.Charcter Hashing
+4.HashMap(Java for large values).
+5.Custom hash table using Divison Method + chaining .
+6. Collision , load factor , rehashing , BestPractices .
+
+
+Brute Force :
+
+import java.util.*;
+public class Main{
+    public static int FindFrequency(int arr[] , int n){
+        int count = 0;
+        for(int x:arr){
+            if(arr[x]==n){
+                count++;
+            }   
+        }
+        
+        return count;
+    }
+    public static void main(String[] args){
+        int[] arr = {2, 1, 2, 3, 4, 3};
+        int n = 10;
+        int result = FindFrequency(arr , n);
+        System.out.print(result);
+    }
+}
+
+This approach is brute force because for every query, you scan the entire array again.
+If array size = N and queries = Q, time complexity = O(N × Q).
+Line-by-line
+
+for (int v : arr) iterates array once.
+
+if (v == x) increments cnt.
+
+Complexity
+
+One call: O(N) where N = arr.length.
+
+With Q queries: O(Q * N).
+Example: if N = 10^5 and Q = 10^5, operations ≈ 10^10. If CPU ~ 10^8 ops/sec → 10^10 / 10^8 = 100 seconds (too slow).
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Array Hashing :
+
+int maxVal = 12;
+int[] freq = new int[maxVal+1]
+for(int v:arr){
+freq[v]++;
+}
+
+Initial Freq (all Zeros), showing indices 0..12:
+index : 0  1 2 3 4 5 6 7 8 9 10 11 12
+        0  0 0 0 0 0 0 0 0 0  0  0  0
+
+Array: arr = [1,3,2,1,3] (N=5).
+
+
+Precompute : We process elements one by one and show freq after each iteration.
+
+Iteration 1 : element v = 1
+Action : freq[1]++ = freq[1] => 0++ => 1
+So while ecah iteration it finds the frequency of all numbers in the array.
+So after the single O(N) precompute pass you have all frequencies stored.
+
+3. Fetching Queries o(1) each :
+suppose queires : [1 , 4 , 2 ,3,12].  For each query q you do :
+if(q>=0 && q<=maxVal)
+System.out.println(freq[q);
+else 0;
+Step-by-step fetch:
+
+Query q = 1 → bounds OK → output freq[1] = 2.
+
+Query q = 4 → bounds OK → output freq[4] = 0.
+
+Query q = 2 → bounds OK → output freq[2] = 1.
+
+Query q = 3 → bounds OK → output freq[3] = 2.
+
+Query q = 12 → bounds OK → output freq[12] = 0.
+
+All fetches are constant time O(1).
+
+4) Complexity recap
+
+Precompute: O(N) (one pass through the array).
+
+Each query: O(1).
+
+Total for Q queries: O(N + Q).
+
+Space: O(maxVal) (array of length maxVal + 1).
+
+5) Memory / caveat for large maxVal
+
+This method is simple and extremely fast when maxVal is small. But if maxVal is large (e.g., 10^9) it becomes impractical because of memory.
+
+Memory calculation (int = 4 bytes):
+
+If maxVal = 12 → length = 13 → bytes = 13 * 4 = 52 bytes (tiny).
+
+If maxVal = 10^9 → length = 1,000,000,001 → bytes = 1,000,000,001 * 4 = 4,000,000,004 bytes ≈ 4.000 GB (decimal) ≈ 3.725 GiB (binary GiB).
+(That is just the raw int data; actual Java int[] has object header and alignment overhead, so real memory is somewhat higher.)
+
+Because typical program memory (and contiguous array allocation) and JVM overhead make such very large arrays impractical, do not use int[] freq when maxVal is huge or unknown. Instead, use a HashMap<Integer,Integer> to store only the keys that actually appear (sparse representation).
+
+6) Safe Java code (with bounds check)
+int maxVal = 12;
+int[] freq = new int[maxVal + 1];
+for (int v : arr) {
+    if (v >= 0 && v <= maxVal) freq[v]++;
+    // else ignore or handle out-of-range values as needed
+}
+
+// answer queries:
+for (int i = 0; i < Q; i++) {
+    int q = sc.nextInt();
+    if (q >= 0 && q <= maxVal) System.out.println(freq[q]);
+    else System.out.println(0);
+}
+
+7) Bottom line (when to use)
+
+Use array hashing (int[] freq) when:
+
+Values are non-negative, dense, and maxVal is reasonably small (fits comfortably in memory).
+
+You need the fastest possible O(1) queries and low overhead.
+
+Use HashMap when:
+
+maxVal is unknown, very large, or keys are sparse (only few unique values).
+
+You need to handle arbitrary ints without huge memory consumption.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Charcter Hashing :
+int[] freq = new int[26];
+for(char c : s.tocharArray()){
+  freq[c - 'a']++;
+}
+
+s = "aabac"
+Inital freq[26]
+
+index : 0 1 2 3 4 5 ... 25
+char:   a  b c d e f ....z
+freq:   0 0 0 0 0 0 0....0
+
+Iteration 1 : c = 'a'
+Index : 'a' - 'a' = 0 freq[0]++ => 1
+freq = [1,0,0,0....]
+index:  0 1 2 3 4 ... 25
+char :  a b c d e ... z
+freq :  3 1 1 0 0 ... 0
+
+2) Case 2: Full ASCII (mixed case, digits, symbols) 
+
+2) Case 2: Full ASCII (mixed case, digits, symbols)
+
+Code:
+
+int[] freq = new int[256];             // ASCII range 0..255
+for (char c : s.toCharArray()) {
+    freq[(int)c]++;                    // direct ASCII code
+}
+// query: freq[(int)'A'], freq[(int)'1'], freq[(int)'$'], etc.
+
+Example
+
+String:
+
+s = "aA1$aa"
+
+
+ASCII mappings:
+
+'a' = 97
+
+'A' = 65
+
+'1' = 49
+
+'$' = 36
+
+Iterations
+
+Iteration 1 → c = 'a' (97) → freq[97]++ → now 1.
+
+Iteration 2 → c = 'A' (65) → freq[65]++ → now 1.
+
+Iteration 3 → c = '1' (49) → freq[49]++ → now 1.
+
+Iteration 4 → c = '$' (36) → freq[36]++ → now 1.
+
+Iteration 5 → c = 'a' (97) → freq[97]++ → now 2.
+
+Iteration 6 → c = 'a' (97) → freq[97]++ → now 3.
+
+Final freq (non-zero entries)
+Char	ASCII	freq
+'a'	97	3
+'A'	65	1
+'1'	49	1
+'$'	36	1
+3) Complexity
+
+Precompute: O(N) (one pass over string).
+
+Query: O(1) (direct index).
+
+Space:
+
+Lowercase only → 26.
+
+ASCII full → 256.
+
+✅ Summary
+
+Lowercase → use c - 'a' trick to map 'a'..'z' → 0..25.
+
+Full ASCII → use int[256] and index by (int)c.
+
+Super fast for frequency queries, but array size grows with alphabet range.
