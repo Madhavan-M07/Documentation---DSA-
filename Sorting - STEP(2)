@@ -312,3 +312,230 @@ Bubble Sort: Best case O(n) if already sorted (with early stop).
 Insertion Sort: Best case O(n), very efficient for nearly sorted data.
 
 All three are O(n²) in worst case, but Insertion Sort is usually fastest in practice for small inputs.
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Merge Sort :
+import java.util.*;
+public class Main{
+    
+    public static void mergeSort(int[] arr , int left , int right){
+        if(left<right){
+            int mid = (left + right)/2;
+             System.out.println("Split [" + left + "," + right + "] -> "
+                + "Left=[" + left + "," + mid + "], "
+                + "Right=[" + (mid + 1) + "," + right + "]");
+                mergeSort(arr,left,mid);
+                mergeSort(arr,mid+1,right);
+            
+        }
+    }
+    
+    public static void main(String[] args){
+        int[] arr = {5,3,8,4,2};
+        mergeSort(arr,0,arr.length-1);
+        
+    }
+}
+
+//This part is for dividing the Array :
+Let’s take your input array:
+
+arr = {5, 3, 8, 4, 2}
+
+🔹 Step 1: First Call
+divide(arr, 0, 4)
+
+
+mid = (0+4)/2 = 2
+
+Prints:
+
+Split [0,4] -> Left=[0,2], Right=[3,4]
+
+
+So recursion branches like this:
+
+          [0,4]
+         /     \
+     [0,2]     [3,4]
+
+🔹 Step 2: Go Left First (divide(arr,0,2))
+
+mid = (0+2)/2 = 1
+
+Prints:
+
+Split [0,2] -> Left=[0,1], Right=[2,2]
+
+
+Tree becomes:
+
+            [0,4]
+           /     \
+       [0,2]     [3,4]
+       /   \
+   [0,1]   [2,2]
+
+
+Notice 👉 recursion does not jump to right [3,4] yet. It goes deep left first.
+
+🔹 Step 3: Continue Left (divide(arr,0,1))
+
+mid = (0+1)/2 = 0
+
+Prints:
+
+Split [0,1] -> Left=[0,0], Right=[1,1]
+
+
+Tree now:
+
+             [0,4]
+            /     \
+        [0,2]     [3,4]
+        /   \
+    [0,1]   [2,2]
+    /   \
+ [0,0] [1,1]
+
+
+At this point:
+
+[0,0] = one element → recursion stops there
+
+[1,1] = one element → stops there
+
+So [0,1] fully finishes → control returns upward.
+
+🔹 Step 4: Return Up and Do Right of [0,2]
+
+After [0,1] completes, recursion goes to [2,2] (one element).
+Now [0,2] is done.
+
+Tree progress is complete for left half.
+
+🔹 Step 5: Now Move to Right (divide(arr,3,4))
+
+mid = (3+4)/2 = 3
+
+Prints:
+
+Split [3,4] -> Left=[3,3], Right=[4,4]
+
+
+Tree fully expands:
+
+              [0,4]
+             /     \
+         [0,2]     [3,4]
+         /   \     /   \
+     [0,1] [2,2] [3,3] [4,4]
+     /   \
+ [0,0] [1,1]
+
+🔹 Key Takeaways about Recursion Flow
+
+Left-first rule → In recursion, when you call:
+
+divide(arr, left, mid);
+divide(arr, mid+1, right);
+
+
+The second line (right) is not executed until the entire left side (and its subcalls) finishes .
+
+Split [0,4] -> Left=[0,2], Right=[3,4]
+Split [0,2] -> Left=[0,1], Right=[2,2]
+Split [0,1] -> Left=[0,0], Right=[1,1]
+Split [3,4] -> Left=[3,3], Right=[4,4]
+
+This function is just for Splitting .
+
+MergeSort :
+
+import java.util.*;
+
+class Solution {
+    private static void merge(int[] arr, int low, int mid, int high) {
+        ArrayList<Integer> temp = new ArrayList<>(); // temporary array
+        int left = low;      // starting index of left half of arr
+        int right = mid + 1;   // starting index of right half of arr
+
+        //storing elements in the temporary array in a sorted manner//
+
+        while (left <= mid && right <= high) {
+            if (arr[left] <= arr[right]) {
+                temp.add(arr[left]);
+                left++;
+            } else {
+                temp.add(arr[right]);
+                right++;
+            }
+        }
+
+        // if elements on the left half are still left //
+
+        while (left <= mid) {
+            temp.add(arr[left]);
+            left++;
+        }
+
+        //  if elements on the right half are still left //
+        while (right <= high) {
+            temp.add(arr[right]);
+            right++;
+        }
+
+        // transfering all elements from temporary to arr //
+        for (int i = low; i <= high; i++) {
+            arr[i] = temp.get(i - low);
+        }
+    }
+
+    public static void mergeSort(int[] arr, int low, int high) {
+        if (low >= high) return;
+        int mid = (low + high) / 2 ;
+        mergeSort(arr, low, mid);  // left half
+        mergeSort(arr, mid + 1, high); // right half
+        merge(arr, low, mid, high);  // merging sorted halves
+    }
+}
+public class tUf {
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        int n = 7;
+        int arr[] = { 9, 4, 7, 6, 3, 1, 5 };
+        System.out.println("Before sorting array: ");
+        for (int i = 0; i < n; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+        Solution.mergeSort(arr, 0, n - 1);
+        System.out.println("After sorting array: ");
+        for (int i = 0; i < n; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+    }
+
+}
+
+Before Sorting Array:
+9 4 7 6 3 1 5
+After Sorting Array:
+1 3 4 5 6 7 9
+
+Time complexity: O(nlogn) 
+
+Reason: At each step, we divide the whole array, for that logn and we assume n steps are taken to get a sorted array, so overall time complexity will be nlogn
+
+Space complexity: O(n)  
+
+Reason: We are using a temporary array to store elements in sorted order.
+
+Auxiliary Space Complexity: O(n)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Qucick Sort :
+
+
+
